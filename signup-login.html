@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stromify Online & In Store: Shoes, Jewelry, Clothing, Makeup, Dresses</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        #signup-login-form {
+            width: 300px;
+            margin: auto;
+            margin-top: 100px;
+            margin-bottom: 150px;
+        }
+        #signup-login-form > p {
+            margin: 20px 0px;
+        }
+        #signup-login-form > h4 {
+           margin-bottom: 7px;
+        }
+        #signup-login-form > input {
+            width: 287px;
+            padding: 10px 0px 10px 10px;
+        }
+        #signup-login-form > button {
+            width: 100%;
+            color: white;
+            padding: 10px 0px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="nav">
+            <div id="nav-top">
+                <h1><a href="index.html">STROMIFY</a></h1>
+                <div>
+                    <input id="search" type="text" placeholder="Search for products or brands">
+                </div>
+                <p><a href="signup-login.html">Sign In</a></p>
+                <p>Stores</p>
+                <p>Purchases</p>
+                <p>Cart</p>
+            </div>
+            <hr id="nav-hr">
+            <div id="nav-bottom">
+                <p>Holiday Gifts</p>
+                <p>Holiday Deals</p>
+                <p>Women</p>
+                <p>Men</p>
+                <p>Kids</p>
+                <p>Young Adult</p>
+                <p>Activewear</p>
+                <p>Home</p>
+                <p>Beauty</p>
+                <p>Designer</p>
+                <p>The Thread</p>
+            </div>
+        </div>
+        
+        <div id="signup-login-form">
+            <h2>Sign In | Create Account</h2>
+            <p>Enter your email to get started.</p>
+
+            <h4>Email</h4>
+            <input id="email" type="email">
+            <p>By tapping Next, you agree to our <span class="underline">Privacy Policy</span> and <span class="underline">Terms & Conditions</span></p>
+            <button>Next</button>
+        </div>
+
+        <div id="footer">
+            <div id="footer-top">
+                <div>
+                   <h3>Customer Service</h3>
+                    <p>Contact Us</p>
+                    <p>Order Status</p>
+                    <p>Shipping</p>
+                    <p>Return Policy & Exchanges</p>
+                    <p>Price Adjustments</p>
+                    <p>Gift Cards</p>
+                    <p>FAQ</p>
+                    <p>Product Recalls</p>
+                    <div id="india">
+                        <img src="https://n.nordstrommedia.com/alias/IN.gif" alt="">
+                        <p>India</p>
+                    </div>
+                </div>
+                <div>
+                   <h3>About Us</h3>
+                    <p>All Brands</p>
+                    <p>Careers</p>
+                    <p>Corporate Social Responsibility</p>
+                    <p>Diversity, Inclusion & Belonging</p>
+                    <p>Get Email Updates</p>
+                    <p>Nordstorm Blog</p>
+                    <p>The Thread</p>
+                    <p>Nordy Podcast</p>
+                </div>
+                <div>
+                   <h3>Stores & Services</h3>
+                    <p>Find a Store</p>
+                    <p>Free Style Help</p>
+                    <p>Alterations & Tailoring</p>
+                    <p>Pop-In Shop</p>
+                    <p>Virtual Events</p>
+                    <p>Spa Nordstrom</p>
+                    <p>Nordstrom Restaurants</p>
+                    <p>Nordstrom Local</p>
+                </div>
+                <div>
+                   <h3>Nordstrom Card & Rewards</h3>
+                    <p>The Nordy Club Rewards</p>
+                    <p>Pay My Bill</p>
+                    <p>Manage My Nordstrom Card</p>
+                </div>
+                <div>
+                   <h3>Nordstrom, Inc.</h3>
+                    <p>Nordstrom Rack</p>
+                    <p>Nordstrom Canada</p>
+                    <p>Investor Relations</p>
+                    <p>Press Releases</p>
+                    <p>Nordstrom Media Network</p>
+                </div>
+            </div>
+            <div id="footer-bottom">
+                <p>Privacy</p>
+                <p>Do Not Sell My Personal information</p>
+                <p>Terms & Condition</p>
+                <p>Interest-Based Ads</p>
+                <p>@2022 Strimify, Inc.</p>
+            </div>
+        </div>
+
+        <script>
+            var btn = document.querySelector("button");
+            var email = document.querySelector("#email");
+
+            
+            btn.addEventListener("click", () => {
+                
+                localStorage.setItem("signupEmail", email.value)
+                
+                var userDataArr = JSON.parse(localStorage.getItem("userData"));
+                if (userDataArr == null) {
+                    userDataArr = [];
+                }
+                
+                if (userDataArr.length == 0) {
+                    location.href = "./signup.html";
+                }
+                else {
+                    var isUserPresent = false;
+
+                    for (let i = 0; i < userDataArr.length; i++) {
+                        if (userDataArr[i].email == email.value) {
+                            isUserPresent = true;
+                            break;
+                        }
+                    }
+
+                    if(isUserPresent) {
+                        location.href = "./login.html";
+                    }
+                    else {
+                        location.href = "./signup.html";
+                    }
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>

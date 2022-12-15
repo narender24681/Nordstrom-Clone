@@ -7,27 +7,22 @@
     <title>Stromify Online & In Store: Shoes, Jewelry, Clothing, Makeup, Dresses</title>
     <link rel="stylesheet" href="index.css">
     <style>
-        #signup-login-form {
-            width: 300px;
+        #products {
+            width: 95%;
             margin: auto;
-            margin-top: 100px;
-            margin-bottom: 150px;
+            margin-bottom: 100px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
         }
-        #signup-login-form > p {
-            margin: 20px 0px;
-        }
-        #signup-login-form > h4 {
-           margin-bottom: 7px;
-        }
-        #signup-login-form > input {
-            width: 287px;
-            padding: 10px 0px 10px 10px;
-        }
-        #signup-login-form > button {
+        #products > .card > img {
             width: 100%;
-            color: white;
-            padding: 10px 0px;
-            background-color: black;
+        }
+        #filter {
+            display: block;
+            margin: 40px auto;
+            padding: 7px 14px;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -39,8 +34,8 @@
                 <div>
                     <input id="search" type="text" placeholder="Search for products or brands">
                 </div>
-                <p><a href="signup-login.html">Sign In</a></p>
-                <p>Stores</p>
+                <p id="showUserName"><a href="signup-login.html">Sign In</a></p>
+                <p id="signOut">Stores</p>
                 <p>Purchases</p>
                 <p>Cart</p>
             </div>
@@ -59,16 +54,22 @@
                 <p>The Thread</p>
             </div>
         </div>
-        
-        <div id="signup-login-form">
-            <h2>Sign In | Create Account</h2>
-            <p>Enter your email to get started.</p>
 
-            <h4>Email</h4>
-            <input id="email" type="email">
-            <p>By tapping Next, you agree to our <span class="underline">Privacy Policy</span> and <span class="underline">Terms & Conditions</span></p>
-            <button>Next</button>
+
+        <div class="products-main">
+            <select id="filter">
+                <option value="">Filter By Featured</option>
+                <option value="Shirts">Shirts</option>
+                <option value="Pants">Pants</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Jackets">Jackets</option>
+                <option value="Sweaters">Sweaters</option>
+                <option value="Jewelry">Jewelry</option>
+            </select>
+
+            <div id="products"></div>
         </div>
+
 
         <div id="footer">
             <div id="footer-top">
@@ -134,40 +135,65 @@
         </div>
 
         <script>
-            var btn = document.querySelector("button");
-            var email = document.querySelector("#email");
+            var products = document.getElementById("products");
+            var filter = document.getElementById("filter");
 
-            
-            btn.addEventListener("click", () => {
-                
-                localStorage.setItem("signupEmail", email.value)
-                
-                var userDataArr = JSON.parse(localStorage.getItem("userData"));
-                if (userDataArr == null) {
-                    userDataArr = [];
-                }
-                
-                if (userDataArr.length == 0) {
-                    location.href = "./signup.html";
-                }
-                else {
-                    var isUserPresent = false;
+            var productsArr = JSON.parse(localStorage.getItem("productsArr"));
+            if (productsArr == null) {
+                productsArr = [];
+            }
 
-                    for (let i = 0; i < userDataArr.length; i++) {
-                        if (userDataArr[i].email == email.value) {
-                            isUserPresent = true;
-                            break;
-                        }
+            displayProducts(productsArr);
+
+            filter.addEventListener("change", () => {
+                console.log(filter.value);
+                var filteredProductsArr = productsArr.filter((element, index) => {
+                    if (filter.value == element.type) {
+                        return true;
                     }
-
-                    if(isUserPresent) {
-                        location.href = "./login.html";
+                    else if (filter.value == "") {
+                        return true;
                     }
                     else {
-                        location.href = "./signup.html";
+                        return false;
                     }
-                }
+                });
+
+                displayProducts(filteredProductsArr);
             });
+
+            function displayProducts(productsArr) {
+                products.innerHTML = null;
+
+                productsArr.forEach((element, index) => {
+                    if (element.gender == "Male") {
+                        var card = document.createElement("div");
+                        card.setAttribute("class", "card");
+        
+                        var img = document.createElement("img");
+                        img.setAttribute("src", element.image);
+        
+                        var brand = document.createElement("h3");
+                        brand.innerText = element.brand;
+        
+                        var name = document.createElement("p");
+                        name.innerText = element.name;
+        
+                        var price = document.createElement("p")
+                        var priceBold = document.createElement("b")
+                        priceBold.innerText = element.price;
+                        price.append(priceBold);
+        
+                        var ratingDiv = document.createElement("div")
+                        var totalRating = document.createElement("p")
+                        totalRating.innerText = "(" + element.totalRating + ")";
+                        ratingDiv.append(totalRating)
+        
+                        card.append(img, brand, name, price, ratingDiv);
+                        products.append(card);
+                    }
+                });
+            }
         </script>
     </div>
 </body>

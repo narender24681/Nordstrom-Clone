@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stromify Online & In Store: Shoes, Jewelry, Clothing, Makeup, Dresses</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        #cart-container {
+            width: 95%;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+        #buttons > button {
+            background-color: white;
+            border: 1px solid lightgray;
+            padding: 14px 30px;
+            font-size: 16px;
+        }
+        #saveForLaterBtn {
+            margin-left: -5px;
+        }
+        #buttons > #shoppingBagBtn {
+            background-color: lightgray;
+        }
+        .hr-top {
+            margin-top: 7px;
+            margin-bottom: 30px;
+        }
+        .hr-bottom {
+            margin: 30px 0px;
+        }
+        #cart-container > h2 {
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        #cart-container > h2 + p {
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+        .blue {
+            color: dodgerblue;
+        }
+        #emptyCart > button {
+            width: 370px;
+            font-size: 16px;
+            padding: 15px 0px;
+            background-color: white;
+            border: 1px solid black;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        #emptyCart h2, #shoppingBag > h2 {
+            margin-top: 30px;
+        }
+        #emptyCart p, #product-bottom-left > p {
+            margin: 15px 0px;
+        }
+        #continueShoppingBtn:hover {
+            cursor: pointer;
+        }
+        #shoppingBag > h2 + p {
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        #shoppingBag > h3 + p {
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        #product-bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+        #product-bottom > #product-bottom-left {
+            width: 40%;
+        }
+        #product-bottom > #product-bottom-right {
+            width: 30%;
+        }
+        #products-price {
+            display: flex;
+            justify-content: space-between;
+        }
+        #product-bottom-right > hr {
+            margin: 15px 0px;
+        }
+        #checkoutBtn {
+            width: 100%;
+            color: white;
+            font-size: 16px;
+            padding: 14px 0px;
+            background-color: black;
+        }
+        #shopping-products {
+            display: flex;
+            justify-content: space-between;
+        }
+        #shopping-products-left {
+            width: 30%;
+        }
+        #shopping-products-middle {
+            width: 30%;
+            line-height: 1.5;
+        }
+        #shopping-products-right {
+            width: 10%;
+        }
+        #shopping-products-left {
+            display: flex;
+        }
+        #shopping-products-left > #product-image > img {
+            width: 100px;
+            height: 150px;
+            object-fit: contain;
+        }
+        #shopping-products-left > #product-text {
+            margin-left: 30px;
+            line-height: 1.5;
+        }
+        #product-text-bottom > div {
+            display: flex;
+            justify-content: space-between;
+        }
+        #product-text-bottom > #productQuantity {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        #productQuantity {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="nav">
+            <div id="nav-top">
+                <h1><a href="index.html">STROMIFY</a></h1>
+                <div>
+                    <input id="search" type="text" placeholder="Search for products or brands">
+                </div>
+                <p id="showUserName"><a href="signup-login.html">Sign In</a></p>
+                <p id="signOut">Stores</p>
+                <p>Purchases</p>
+                <p>Cart</p>
+            </div>
+            <hr id="nav-hr">
+            <div id="nav-bottom">
+                <p>Holiday Gifts</p>
+                <p>Holiday Deals</p>
+                <p><a href="womens.html">Women</a></p>
+                <p><a href="mens.html">Men</a></p>
+                <p><a href="kids.html">Kids</a></p>
+                <p>Young Adult</p>
+                <p>Activewear</p>
+                <p>Home</p>
+                <p>Beauty</p>
+                <p>Designer</p>
+                <p>The Thread</p>
+            </div>
+        </div>
+        
+        <div id="cart-container">
+            <div id="buttons">
+                <button id="shoppingBagBtn">Shopping Bag(1)</button>
+                <button id="saveForLaterBtn">Saved for Later(0)</button>
+            </div>
+
+            
+            
+            <div id="shoppingBag">
+                <h2>Shopping Bag</h2>
+                <p>Items in your bag are not on hold.</p>
+    
+                <p>Choose gift options when you check out.</p>
+                <hr class="hr-top">
+                
+                <h3>Shipping (1 item) to <span class="blue">India</span></h3>
+                <p>International shipping</p>
+                <hr class="hr-top">
+
+                <div id="shopping-products">
+                    <div id="shopping-products-left">
+                        <div id="product-image">
+                            <img src="https://n.nordstrommedia.com/id/sr3/e3de6e99-07a2-4739-9e0f-adf90a22c11e.jpeg?crop=pad&pad_color=FFF&format=jpeg" alt="">
+                        </div>
+                        <div id="product-text">
+                            <div id="product-text-top">
+                                <p>NIKE</p>
+                                <p>Air Force 1 '07 Sneaker</p>
+
+                                <p>Size: 7</p>
+                                <p>Color: White</p>
+                                <p>Item: 6983763</p>
+                            </div>
+                            <div id="product-text-bottom">
+                                <select id="productQuantity">
+                                    <option value="1">Qty 1</option>
+                                    <option value="2">Qty 2</option>
+                                    <option value="3">Qty 3</option>
+                                    <option value="4">Qty 4</option>
+                                    <option value="5">Qty 5</option>
+                                </select>
+
+                                <div>
+                                    <p class="blue">Remove</p>
+                                    <p class="blue">Save for later</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="shopping-products-middle">
+                        <h3>Shipping</h3>
+                        <p>International orders usually arrive within 5–13 business days. We'll give you shipping dates in checkout.</p>
+                    </div>
+                    <div id="shopping-products-right">
+                        <p><b>INR 9,898</b></p>
+                    </div>
+                </div>
+                
+                <hr class="hr-bottom">
+
+                <div id="product-bottom">
+                    <div id="product-bottom-left">
+                        <p>Accepted Payment Methods</p>
+                        <p>Need help? Call 1.888.282.6060 or <span class="blue">chat with us</span></p>
+                        <p class="blue">Shipping internationally?</p>
+                    </div>
+                    <div id="product-bottom-right">
+                        <div id="products-price">
+                            <p>Subtotal</p>
+                            <p id="totalPrice">INR 9,898</p>
+                        </div>
+                        <hr>
+                        <button id="checkoutBtn">Check Out</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <!-- <div id="emptyCart">
+                <h2>Your bag is empty</h2>
+                <button id="continueShoppingBtn">Continue Shopping</button>
+                <p>Accepted Payment Methods</p>
+                <p>Need help? Call 1.888.282.6060 or <span class="blue">chat with us</span></p>
+                <p class="blue">Shipping internationally?</p>
+            </div> -->
+        </div>
+
+        <div id="footer">
+            <div id="footer-top">
+                <div>
+                   <h3>Customer Service</h3>
+                    <p>Contact Us</p>
+                    <p>Order Status</p>
+                    <p>Shipping</p>
+                    <p>Return Policy & Exchanges</p>
+                    <p>Price Adjustments</p>
+                    <p>Gift Cards</p>
+                    <p>FAQ</p>
+                    <p>Product Recalls</p>
+                    <div id="india">
+                        <img src="https://n.nordstrommedia.com/alias/IN.gif" alt="">
+                        <p>India</p>
+                    </div>
+                </div>
+                <div>
+                   <h3>About Us</h3>
+                    <p>All Brands</p>
+                    <p>Careers</p>
+                    <p>Corporate Social Responsibility</p>
+                    <p>Diversity, Inclusion & Belonging</p>
+                    <p>Get Email Updates</p>
+                    <p>Nordstorm Blog</p>
+                    <p>The Thread</p>
+                    <p>Nordy Podcast</p>
+                </div>
+                <div>
+                   <h3>Stores & Services</h3>
+                    <p>Find a Store</p>
+                    <p>Free Style Help</p>
+                    <p>Alterations & Tailoring</p>
+                    <p>Pop-In Shop</p>
+                    <p>Virtual Events</p>
+                    <p>Spa Nordstrom</p>
+                    <p>Nordstrom Restaurants</p>
+                    <p>Nordstrom Local</p>
+                </div>
+                <div>
+                   <h3>Nordstrom Card & Rewards</h3>
+                    <p>The Nordy Club Rewards</p>
+                    <p>Pay My Bill</p>
+                    <p>Manage My Nordstrom Card</p>
+                </div>
+                <div>
+                   <h3>Nordstrom, Inc.</h3>
+                    <p>Nordstrom Rack</p>
+                    <p>Nordstrom Canada</p>
+                    <p>Investor Relations</p>
+                    <p>Press Releases</p>
+                    <p>Nordstrom Media Network</p>
+                </div>
+            </div>
+            <div id="footer-bottom">
+                <p>Privacy</p>
+                <p>Do Not Sell My Personal information</p>
+                <p>Terms & Condition</p>
+                <p>Interest-Based Ads</p>
+                <p>@2022 Strimify, Inc.</p>
+            </div>
+        </div>
+
+        <script>
+            var cartContainer = document.getElementById("cart-container");
+            var continueShoppingBtn = document.getElementById("continueShoppingBtn");
+
+            // cartContainer.innerHTML = ``;
+
+            continueShoppingBtn.addEventListener("click", () => {
+                location.href = "./index.html";
+            });
+        </script>
+    </div>
+</body>
+</html>

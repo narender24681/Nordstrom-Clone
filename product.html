@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stromify Online & In Store: Shoes, Jewelry, Clothing, Makeup, Dresses</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        #product-container {
+            width: 95%;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+        #product {
+            display: flex;
+            justify-content: space-between;
+        }
+        #product > #product-images {
+            width: 57%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        #product > #product-images > img {
+            width: 100%;
+        }
+        #product > #product-images > .imgDisplay {
+            display: none;
+        }
+        #product > #product-images > #showMoreLess {
+            width: 90px;
+            padding: 4px;
+            border: 1px solid lightgrey;
+            display: block;
+            margin: auto;
+            background-color: white;
+        }
+        #product > #product-info {
+            width: 40%;
+        }
+        #product > #product-info > select {
+            width: 300px;
+            padding: 10px 15px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        #product > #product-info > h2 + p {
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        #product > #product-info > p {
+            line-height: 1.2;
+            margin-bottom: 7px;
+        }
+        #product > #product-info > #addToCartBtn {
+            display: block;
+            width: 300px;
+            color: white;
+            padding: 14px;
+            margin-top: 20px;
+            background-color: black;
+        }
+        #fit {
+            margin-top: 30px;
+        }
+        #hrStyle {
+            margin-top: 70px;
+            width: 60%;
+        }
+        #product-details {
+            display: flex;
+            width: 60%;
+            margin-top: 70px;
+            justify-content: space-between;
+        }
+        #product-details {
+            line-height: 1.4;
+        }
+        #product-details-left {
+            width: 48%;
+        }
+        #product-details-right {
+            width: 48%;
+        }
+        #product-details-left > ul {
+            margin-left: 15px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        #product-details-left > p {
+            margin-top: 20px;
+        }
+        #product-details-right > ul {
+            margin-left: 15px;
+            margin-top: 7px;
+            margin-bottom: 30px;
+        }
+        #product-details-right > h3 {
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        #product-details-right > button {
+            width: 240px;
+            font-size: 17px;
+            padding: 14px 0px;
+            margin-top: 15px;
+            background-color: white;
+            border: 1px solid black;
+        }
+        .boldTitle {
+            margin-top: 30px;
+        }
+        .boldTitle1 {
+            margin-bottom: 7px;
+        }
+        #product-reviews > .hr-top {
+            margin-top: 70px;
+            margin-bottom: 30px;
+        }
+        #product-reviews > #hr-bottom {
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+        #product-questions > p {
+            margin: 15px 0px;
+        }
+        #product-questions > button {
+            width: 240px;
+            font-size: 16px;
+            padding: 15px 0px;
+            border: 1px solid black;
+            background-color: white;
+        }
+        #product-customer-images {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin: 15px 30px 0px 30px;
+        }
+        #product-customer-images > img {
+            width: 100%;
+        }
+        #product-customer-reviews {
+            display: flex;
+            justify-content: space-between;
+        }
+        #product-customer-reviews p {
+            margin: 15px 0px;
+        }
+        #product-customer-reviews-left {
+            width: 30%;
+        }
+        #product-customer-reviews-right {
+            width: 70%;
+        }
+        #product-customer-reviews-right > img {
+            width: 140px;
+            height: 140px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            object-fit: cover;
+        }
+        .hr-mid {
+            margin: 15px 0px;
+        }
+        #product-customer-reviews-main > p {
+            text-align: center;
+        }
+        #addToCartBtn:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="nav">
+            <div id="nav-top">
+                <h1><a href="index.html">STROMIFY</a></h1>
+                <div>
+                    <input id="search" type="text" placeholder="Search for products or brands">
+                </div>
+                <p id="showUserName"><a href="signup-login.html">Sign In</a></p>
+                <p id="signOut">Stores</p>
+                <p>Purchases</p>
+                <p>Cart</p>
+            </div>
+            <hr id="nav-hr">
+            <div id="nav-bottom">
+                <p>Holiday Gifts</p>
+                <p>Holiday Deals</p>
+                <p><a href="womens.html">Women</a></p>
+                <p><a href="mens.html">Men</a></p>
+                <p><a href="kids.html">Kids</a></p>
+                <p>Young Adult</p>
+                <p>Activewear</p>
+                <p>Home</p>
+                <p>Beauty</p>
+                <p>Designer</p>
+                <p>The Thread</p>
+            </div>
+        </div>
+
+        <div id="product-container">
+            <div id="product">
+                <div id="product-images">
+                    <img src="https://n.nordstrommedia.com/id/sr3/e1f5bfee-ee4f-439a-a7ff-5270d7825de0.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img src="https://n.nordstrommedia.com/id/sr3/a3c1c949-1e6c-4b3c-966d-5ddced45ce24.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/e3de6e99-07a2-4739-9e0f-adf90a22c11e.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/43669822-a634-4414-8be3-b9dd2441cafa.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/2a0aeafe-77e2-4af4-9482-61d651ea069a.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/982d6496-6961-4453-8b91-81b3ebd347fc.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <button id="showMoreLess">Show More</button>
+                </div>
+
+
+                <div id="product-info">
+                    <h2>Air Force 1 '07 Sneaker</h2>
+                    <p>NIKE</p>
+                    <p><b>INR 8,787.79 – INR 9,666.57</b></p>
+                    <p>Back-to-basics detailing keeps the look timeless on an '80s-throwback sneaker reissued with OG colors and a cool low-cut profile.</p>
+                    <p id="fit"><b>Fit:</b> True to size.</p>
+
+                    <select id="selectSize">
+                        <option value="">Size</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+
+                    <select id="selectColor">
+                        <option value="White">White</option>
+                        <option value="Black">Black</option>
+                    </select>
+
+                    <button id="addToCartBtn">Add To Cart</button>
+                </div>
+            </div>
+
+            <hr id="hrStyle">
+
+            <div id="product-details">
+                <div id="product-details-left">
+                    <h3>Size Info</h3>
+                    <ul>
+                        <li>True to size.</li>
+                    </ul>
+
+                    <h3>Details & Care</h3>
+                    <p>Back-to-basics detailing keeps the look timeless on an '80s-throwback sneaker reissued with OG colors and a cool low-cut profile. The iconic Air Force 1 sole sports embedded Nike Air cushioning and crenellations along the tread that frame a star-studded bumper toe.</p>
+                    <ul>
+                        <li>Cushioning: absorbs impact and distributes weight for consistent, buoyant comfort under each step</li>
+                        <li>Lace-up style</li>
+                        <li>Removable insole</li>
+                        <li>Nike Air unit in the sole provides lightweight comfort</li>
+                        <li>Leather upper/synthetic lining/rubber sole</li>
+                        <li>Imported</li>
+                        <li>Men's Shoes</li>
+                        <li>Item #5408846</li>
+                    </ul>
+
+                    <p><b>Free Shipping & Returns </b><span class="underline">See more</span></p>
+                </div>
+                <div id="product-details-right">
+                    <p class="boldTitle1"><b>GIFT OPTIONS</b></p>
+                    <p>Choose your gift options at Checkout. Some items may not be eligible for all gift options.</p>
+                    
+                    <p class="boldTitle"><b>Free Pickup</b></p>
+                    <ul>
+                        <li>Printed gift message (free)</li>
+                        <li>Nordstrom gift box (free)</li>
+                        <li>Fabric gift bag ($5)</li>
+                        <li>Signature gift wrap ($5)</li>
+                    </ul>
+                    
+                    <p><b>Delivery</b></p>
+                    <ul>
+                        <li>Email gift message (free)</li>
+                        <li>Printed gift message (free)</li>
+                        <li>Fabric gift bag ($5)</li>
+                    </ul>
+
+                    <p><b>Need help finding the perfect gift? We've got you covered.</b></p>
+                    <button>Shop Gift</button>
+
+                    <h3 class="underline"><b>NIKE</b></h3>
+                    <p>Rooted in a dedication to innovation and helping people improve their game, Nike asserts that we're all athletes and strives to outfit each of us with the high-performance gear our workouts need. Founded in Oregon by a track athlete and his coach, this now globally renowned brand creates inventive shoes and apparel for athletes at all levels.</p>
+                </div>
+            </div>
+            
+            <div id="product-reviews">
+                <hr class="hr-top">
+                <div id="product-questions">
+                    <h3>HAVE QUESTIONS?</h3>
+                    <p>Connect with us to get free style advice, product recommendations or customer service help.</p>
+                    <button>Chat Now</button>
+                </div>
+                <hr id="hr-bottom">
+                
+                <h2>Customer photos</h2>
+                <div id="product-customer-images">
+                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/a5cde7b4-4196-5e7d-9b7d-b62b342d59bf" alt="">
+                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/1a5073fd-2d0c-5e13-b05c-5364e817240a" alt="">
+                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/e16ab3ef-4f20-509e-8bfe-6df23d09737c" alt="">
+                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/b0dec3b3-66d1-58d8-9a3c-59b84a864000" alt="">
+                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/78156d1c-dd91-542b-a277-4fb9bc31a9f7" alt="">
+                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/d92aafb1-199e-5f15-b09c-81507e3a3e7b" alt="">
+                </div>
+                
+                <hr class="hr-top">
+                <div id="product-customer-reviews-main">
+                    <div id="product-customer-reviews">
+                        <div id="product-customer-reviews-left">
+                            <p>ReinaLinda</p>
+                            <p>Sweepstakes entry</p>
+                            <p><b>Fit:</b> True to size</p>
+                            <p><b>Width:</b> True to width</p>
+                        </div>
+                        <div id="product-customer-reviews-right">
+                            <p>June 22, 2020</p>
+                            <p><b>Classic Must Haves</b></p>
+                            <p>My husband has loved these shoes since he was a teenager, so I keep buying them as soon as his old pair is worn out.</p>
+                            <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bm9yZHN0cm9t/8ce8d456-39a5-5b3d-8ffe-138abcf88e8f" alt="">
+                            <p><b>38</b> found this helpful</p>
+                        </div>
+                    </div>
+                    <hr class="hr-mid">
+                    <div id="product-customer-reviews">
+                        <div id="product-customer-reviews-left">
+                            <p>Emerito</p>
+                            <p>Sweepstakes entry</p>
+                            <p><b>Fit:</b> True to size</p>
+                            <p><b>Width:</b> True to width</p>
+                        </div>
+                        <div id="product-customer-reviews-right">
+                            <p>Feb 15, 2020</p>
+                            <p><b>I like color and style</b></p>
+                            <p>Nice sneaker good fit and comfortable</p>
+                            <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bm9yZHN0cm9t/7ac9938a-faee-50a5-b352-93aec6d4d9d2" alt="">
+                            <p><b>12</b> found this helpful</p>
+                        </div>
+                    </div>
+                    <hr class="hr-mid">
+                    <div id="product-customer-reviews">
+                        <div id="product-customer-reviews-left">
+                            <p>LushoL</p>
+                            <p>Sweepstakes entry</p>
+                            <p><b>Fit:</b> True to size</p>
+                            <p><b>Width:</b> True to width</p>
+                        </div>
+                        <div id="product-customer-reviews-right">
+                            <p>June 6, 2019</p>
+                            <p><b>Buy the white one or your a criminal.</b></p>
+                            <p>Very comfortable to put on and has a lot of clout!</p>
+                            <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bm9yZHN0cm9t/8ce8d456-39a5-5b3d-8ffe-138abcf88e8f" alt="">
+                            <p><b>11</b> found this helpful</p>
+                        </div>
+                    </div>
+                    <hr class="hr-mid">
+                    <div id="product-customer-reviews">
+                        <div id="product-customer-reviews-left">
+                            <p>Sultry</p>
+                            <p>Sweepstakes entry</p>
+                            <p><b>Fit:</b> True to size</p>
+                            <p><b>Width:</b> True to width</p>
+                        </div>
+                        <div id="product-customer-reviews-right">
+                            <p>Jan 5, 2020</p>
+                            <p><b>Great Nike Air!</b></p>
+                            <p>This is a great pair of white shoes. My 15 year old love this;</p>
+                            <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bm9yZHN0cm9t/8f3f0c24-07e5-5d91-b3bb-4604f0fd2589" alt="">
+                            <p><b>8</b> found this helpful</p>
+                        </div>
+                    </div>
+                    <hr class="hr-mid">
+                    <div id="product-customer-reviews">
+                        <div id="product-customer-reviews-left">
+                            <p>Cutebutbiginsize</p>
+                            <p>Sweepstakes entry</p>
+                            <p><b>Fit:</b> True to size</p>
+                            <p><b>Width:</b> True to width</p>
+                        </div>
+                        <div id="product-customer-reviews-right">
+                            <p>Mar 28, 2019</p>
+                            <p><b>Love this shoe</b></p>
+                            <p>I bought this shoe because mens shoes always fit better</p>
+                            <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bm9yZHN0cm9t/444f75cc-60de-5d94-b691-34125ef2d7a0" alt="">
+                            <p><b>7</b> found this helpful</p>
+                        </div>
+                    </div>
+                    <hr class="hr-mid">
+                    <p class="underline">Load 6 more reviews</p>
+                    <hr class="hr-mid">
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div id="footer-top">
+                <div>
+                   <h3>Customer Service</h3>
+                    <p>Contact Us</p>
+                    <p>Order Status</p>
+                    <p>Shipping</p>
+                    <p>Return Policy & Exchanges</p>
+                    <p>Price Adjustments</p>
+                    <p>Gift Cards</p>
+                    <p>FAQ</p>
+                    <p>Product Recalls</p>
+                    <div id="india">
+                        <img src="https://n.nordstrommedia.com/alias/IN.gif" alt="">
+                        <p>India</p>
+                    </div>
+                </div>
+                <div>
+                   <h3>About Us</h3>
+                    <p>All Brands</p>
+                    <p>Careers</p>
+                    <p>Corporate Social Responsibility</p>
+                    <p>Diversity, Inclusion & Belonging</p>
+                    <p>Get Email Updates</p>
+                    <p>Nordstorm Blog</p>
+                    <p>The Thread</p>
+                    <p>Nordy Podcast</p>
+                </div>
+                <div>
+                   <h3>Stores & Services</h3>
+                    <p>Find a Store</p>
+                    <p>Free Style Help</p>
+                    <p>Alterations & Tailoring</p>
+                    <p>Pop-In Shop</p>
+                    <p>Virtual Events</p>
+                    <p>Spa Nordstrom</p>
+                    <p>Nordstrom Restaurants</p>
+                    <p>Nordstrom Local</p>
+                </div>
+                <div>
+                   <h3>Nordstrom Card & Rewards</h3>
+                    <p>The Nordy Club Rewards</p>
+                    <p>Pay My Bill</p>
+                    <p>Manage My Nordstrom Card</p>
+                </div>
+                <div>
+                   <h3>Nordstrom, Inc.</h3>
+                    <p>Nordstrom Rack</p>
+                    <p>Nordstrom Canada</p>
+                    <p>Investor Relations</p>
+                    <p>Press Releases</p>
+                    <p>Nordstrom Media Network</p>
+                </div>
+            </div>
+            <div id="footer-bottom">
+                <p>Privacy</p>
+                <p>Do Not Sell My Personal information</p>
+                <p>Terms & Condition</p>
+                <p>Interest-Based Ads</p>
+                <p>@2022 Strimify, Inc.</p>
+            </div>
+        </div>
+        
+        <script>
+            var product = document.getElementById("product");
+            var showMoreLess = document.getElementById("showMoreLess");
+            var imgDisplay = document.getElementsByClassName("imgDisplay");
+            var addToCartBtn = document.getElementById("addToCartBtn");
+            var selectSize = document.getElementById("selectSize");
+            var selectColor = document.getElementById("selectColor");
+
+            console.log(product);
+
+            showMoreLess.addEventListener("click", () => {    
+                if (showMoreLess.innerText == "Show More") {
+                    for (let i = 0; i < imgDisplay.length; i++) {
+                        imgDisplay[i].style.display = "block";
+                        console.log(imgDisplay[i]);
+                    }
+                    showMoreLess.innerText = "Show Less";
+                }
+                else if (showMoreLess.innerText == "Show Less") {
+                    for (let i = 0; i < imgDisplay.length; i++) {
+                        imgDisplay[i].style.display = "none";
+                        console.log(imgDisplay[i]);
+                    }
+                    showMoreLess.innerText = "Show More";
+                }
+                
+            });
+
+
+            addToCartBtn.addEventListener("click", () => {
+                console.log(selectSize.value);
+                console.log(selectColor.value);
+
+                location.href = "./cart.html";
+            });
+        </script>
+    </div>
+</body>
+</html>

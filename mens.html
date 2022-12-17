@@ -24,6 +24,16 @@
             padding: 7px 14px;
             font-size: 18px;
         }
+        @media screen and (min-width: 721px) and (max-width: 1080px) {
+            #products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media screen and (max-width: 720px) {
+            #products {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -166,7 +176,7 @@
                 products.innerHTML = null;
 
                 productsArr.forEach((element, index) => {
-                    if (element.gender == "Male") {
+                    if (element.gender == "Men") {
                         var card = document.createElement("div");
                         card.setAttribute("class", "card");
         
@@ -198,6 +208,7 @@
                 });
             }
         </script>
+        <script src="./index.js"></script>
     </div>
 </body>
 </html>

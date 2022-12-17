@@ -15,7 +15,7 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 30px;
         }
-        #products > .card > img {
+        #products > .card > a > img {
             width: 100%;
         }
         #filter {
@@ -59,7 +59,7 @@
         <div class="products-main">
             <select id="filter">
                 <option value="">Filter By Featured</option>
-                <option value="Male">Male</option>
+                <option value="Men">Men</option>
                 <option value="Women">Women</option>
                 <option value="Kids">Kids</option>
             </select>
@@ -142,35 +142,6 @@
 
             displayProducts(searchedProductsArr);
 
-
-            search.addEventListener("keypress", (event) => {
-                if (event.key === "Enter") {
-                    console.log(search.value);
-
-                    var productsArr = JSON.parse(localStorage.getItem("productsArr"));
-                    if (productsArr == null) {
-                        productsArr = [];
-                    }
-
-                    var searchedProductsArr = productsArr.filter((element, index) => {
-                        if (search.value == element.type) {
-                            return true;
-                        }
-                        else {
-                            return false;
-                        }
-                    });
-
-                    if (searchedProductsArr.length > 0) {
-                        console.log(searchedProductsArr);
-                        localStorage.setItem("searchedProductsArr", JSON.stringify(searchedProductsArr));
-
-                        location.href = "./search.html";
-                    }
-                }
-            });
-
-
             filter.addEventListener("change", () => {
                 console.log(filter.value);
                 var filteredProductsArr = searchedProductsArr.filter((element, index) => {
@@ -198,8 +169,11 @@
                     var card = document.createElement("div");
                     card.setAttribute("class", "card");
     
+                    var a = document.createElement("a");
+                    a.setAttribute("href", "./product.html");
                     var img = document.createElement("img");
                     img.setAttribute("src", element.image);
+                    a.append(img);
     
                     var brand = document.createElement("h3");
                     brand.innerText = element.brand;
@@ -217,11 +191,12 @@
                     totalRating.innerText = "(" + element.totalRating + ")";
                     ratingDiv.append(totalRating)
     
-                    card.append(img, brand, name, price, ratingDiv);
+                    card.append(a, brand, name, price, ratingDiv);
                     products.append(card);
                 });
             }
         </script>
+        <script src="./index.js"></script>
     </div>
 </body>
 </html>

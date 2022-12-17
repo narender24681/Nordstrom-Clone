@@ -15,7 +15,7 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 30px;
         }
-        #products > .card > img {
+        #products > .card > a > img {
             width: 100%;
         }
         #filter {
@@ -23,6 +23,16 @@
             margin: 40px auto;
             padding: 7px 14px;
             font-size: 18px;
+        }
+        @media screen and (min-width: 721px) and (max-width: 1080px) {
+            #products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media screen and (max-width: 720px) {
+            #products {
+                grid-template-columns: repeat(1, 1fr);
+            }
         }
     </style>
 </head>
@@ -168,8 +178,11 @@
                         var card = document.createElement("div");
                         card.setAttribute("class", "card");
         
+                        var a = document.createElement("a");
+                        a.setAttribute("href", "./product.html");
                         var img = document.createElement("img");
                         img.setAttribute("src", element.image);
+                        a.append(img);
         
                         var brand = document.createElement("h3");
                         brand.innerText = element.brand;
@@ -187,12 +200,13 @@
                         totalRating.innerText = "(" + element.totalRating + ")";
                         ratingDiv.append(totalRating)
         
-                        card.append(img, brand, name, price, ratingDiv);
+                        card.append(a, brand, name, price, ratingDiv);
                         products.append(card);
                     }
                 });
             }
         </script>
+        <script src="./index.js"></script>
     </div>
 </body>
 </html>

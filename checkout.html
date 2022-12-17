@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stromify Online & In Store: Shoes, Jewelry, Clothing, Makeup, Dresses</title>
+    <style>
+        #container {
+            width: 95%;
+            margin: auto;
+        }
+        #checkout-container {
+            width: 90%;
+            margin: auto;
+            margin-bottom: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #checkout-container-left {
+            width: 66%;
+        }
+        #checkout-container-right {
+            width: 27%;
+            background-color: whitesmoke;
+            padding: 10px 20px;
+        }
+        #checkout-container-right > button {
+            width: 100%;
+            color: white;
+            padding: 14px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: black;
+        }
+        #totalPrice > div {
+            display: flex;
+            justify-content: space-between;
+        }
+        #promoCode {
+            color: dodgerblue;
+            margin: 10px 0px;
+        }
+        .hrTop {
+            margin-top: 25px;
+        }
+        #hr-top {
+            width: 90%;
+            margin: auto;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        #checkout-container-right > #product {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0px;
+            line-height: 1.4;
+        }
+        #checkout-container-right > #product > img {
+            width: 30%;
+            object-fit: contain;
+        }
+        #checkout-container-right > #product > div {
+            width: 60%;
+        }
+        .blue {
+            color: dodgerblue;
+        }
+        #checkout-container-left > hr {
+            margin: 15px 0px;
+        }
+        #checkout-container-left > h2 + P {
+            margin-top: 15px;
+        }
+        #checkout-container-left > div {
+            display: flex;
+            justify-content: space-between;
+        }
+        #checkout-container-left > div > input {
+            width: 45%;
+        }
+        #checkout-container-left input {
+            border: 1px solid lightgrey;
+            padding: 14px 0px 14px 14px;
+            width: 97%;
+            margin: 14px 0px;
+        }
+        #checkout-container-left > #hr1 {
+            margin: 10px 0px;
+        }
+        #place-order {
+            display: block;
+            margin: 20px auto;
+            color: white;
+            background-color: black;
+            padding: 14px 0px;
+            width: 300px;
+        }
+        .p-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>STROMIFY</h2>
+
+        <hr id="hr-top">
+        <div id="checkout-container">
+            <div id="checkout-container-left">
+                <h2>Secure Checkout</h2>
+                <p>Already have a Borderfree account? Click <span class="blue"> here.</span></p>
+                <hr id="hr1">
+
+                <h3>Delivery</h3>
+                <input type="emain" id="email" placeholder="Email">
+                <div>
+                    <input type="text" id="fname" placeholder="First Name">
+                    <input type="text" id="lname" placeholder="Last Name">
+                </div>
+                <input type="text" id="address" placeholder="Address">
+                <div>
+                    <input type="text" id="address2" placeholder="Address 2 (Optional)">
+                    <input type="text" id="postal-code" placeholder="Postal Code">
+                </div>
+                <div>
+                    <input type="text" id="city" placeholder="City">
+                    <input type="text" id="region" placeholder="Region (Optional)">
+                </div>
+                <div>
+                    <input type="number" id="phone" placeholder="Phone">
+                    <input type="text" id="location" placeholder="Location">
+                </div>
+                <hr>
+
+                <h3>Payment</h3>
+                <p>My billing address is the same as my delivery address</p>
+                <p>Credit or Debit Card</p>
+                <input type="text" id="card-number" placeholder="Card Number">
+                <div>
+                    <input type="text" id="mmyy" placeholder="MM/YY">
+                    <input type="text" id="security-code" placeholder="Security Code">
+                </div>
+                <button id="place-order">Place Order</button>
+                <p class="p-center">This order total is 100% guaranteed. There will be no additional charges due upon receipt.</p>
+                <hr>
+                <p class="p-center">By placing your order, you agree to the Terms & Conditions and Privacy Policy of Boderfree, a Global-e company, Nordstrom’s international fulfillment service. Borderfree is an online merchant that is located at 200 West 41st Street, New York, NY 10036, US.</p>
+            </div>
+            <div id="checkout-container-right">
+                <h2>Your Order</h2>
+
+                <button>Continue</button>
+                <div id="totalPrice">
+                    <div>
+                        <p>Items</p>
+                        <p>₹6,250</p>
+                    </div>
+                    <div>
+                        <p>Shipping</p>
+                        <p>₹3,100</p>
+                    </div>
+                    <div>
+                        <p>Duties & Taxes</p>
+                        <p>₹6,250</p>
+                    </div>
+                    <div>
+                        <h3>TOTAL</h3>
+                        <h3>(INR) ₹13,285</h3>
+                    </div>
+                </div>
+
+                <hr class="hrTop">
+                <p id="promoCode">Promo Code</p>
+                <hr>
+
+                <div id="product">
+                    <img src="https://n.nordstrommedia.com/id/sr3/e3de6e99-07a2-4739-9e0f-adf90a22c11e.jpeg?crop=pad&pad_color=FFF&format=jpeg" alt="">
+                    <div>
+                        <p><b>Air Force 1 '07 Sneaker</b></p>
+                        <p>Color: White</p>
+                        <p>Size: 7</p>
+                        <p>Qty: 1</p>
+                        <p><b>₹9,898</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            
+        </script>
+    </div>
+</body>
+</html>

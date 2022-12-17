@@ -58,7 +58,7 @@
         #emptyCart p, #product-bottom-left > p {
             margin: 15px 0px;
         }
-        #continueShoppingBtn:hover {
+        #continueShoppingBtn:hover, #checkoutBtn:hover {
             cursor: pointer;
         }
         #shoppingBag > h2 + p {
@@ -317,11 +317,14 @@
         <script>
             var cartContainer = document.getElementById("cart-container");
             var continueShoppingBtn = document.getElementById("continueShoppingBtn");
+            var checkoutBtn = document.getElementById("checkoutBtn");
 
-            // cartContainer.innerHTML = ``;
-
-            continueShoppingBtn.addEventListener("click", () => {
-                location.href = "./index.html";
+            // continueShoppingBtn.addEventListener("click", () => {
+            //     location.href = "./index.html";
+            // });
+            
+            checkoutBtn.addEventListener("click", () => {
+                location.href = "./checkout.html";
             });
         </script>
     </div>

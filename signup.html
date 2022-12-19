@@ -209,29 +209,30 @@
             });
 
 
-            var userDataArr = JSON.parse(localStorage.getItem("userData"));
-            if (userDataArr == null) {
-                userDataArr = [];
+            var usersCredentialsArr = JSON.parse(localStorage.getItem("usersCredentials"));
+            if (usersCredentialsArr == null) {
+                usersCredentialsArr = [];
             }
 
             form.addEventListener("submit", (e) => {
                 e.preventDefault();
 
-                var userData = {
+                var usersCredentials = {
                     fname: form.fname.value,
                     lname: form.lname.value,
                     email: setEmail.innerHTML,
                     password: form.password.value,
                 }
 
-                userDataArr.push(userData);
-                localStorage.setItem("userData", JSON.stringify(userDataArr));
-                console.log(userDataArr);
+                usersCredentialsArr.push(usersCredentials);
+                localStorage.setItem("usersCredentials", JSON.stringify(usersCredentialsArr));
+                console.log(usersCredentialsArr);
 
-                localStorage.setItem("signupUserName", form.fname.value)
+                localStorage.setItem("loggedInUserName", form.fname.value)
                 location.href = "./index.html";
             });
         </script>
+        <script src="./index.js"></script>
     </div>
 </body>
 </html>

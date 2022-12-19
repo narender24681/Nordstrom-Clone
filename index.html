@@ -437,26 +437,8 @@
                 <p>@2022 Strimify, Inc.</p>
             </div>
         </div>
-
-        <script>
-            var showUserName = document.getElementById("showUserName");
-            var signOut = document.getElementById("signOut");
-            var getUserName = localStorage.getItem("signupUserName");
-            var search = document.getElementById("search");
-            
-            console.log(getUserName == "")
-            if (getUserName != null) {
-                if(getUserName != "") {
-                    showUserName.innerText = "Hi, " + getUserName;
-                    signOut.innerText = "Sign Out";
-                }
-            }
-
-            signOut.addEventListener("click", () => {
-                localStorage.setItem("signupUserName", "")
-                location.href = "./index.html";
-            });
-        </script>
+        
+        <script src="./products-data.js"></script>
         <script src="./index.js"></script>
     </div>
 </body>

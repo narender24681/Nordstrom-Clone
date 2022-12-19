@@ -190,23 +190,24 @@
 
 
             submit.addEventListener("click", () => {
-                var userDataArr = JSON.parse(localStorage.getItem("userData"));
-                if (userDataArr == null) {
-                    userDataArr = [];
+                var usersCredentialsArr = JSON.parse(localStorage.getItem("usersCredentials"));
+                if (usersCredentialsArr == null) {
+                    usersCredentialsArr = [];
                 }
 
                 var isValidCredentials = false;
                 var userName = "";
-                for (let i = 0; i < userDataArr.length; i++) {
-                    if (userDataArr[i].email == setEmail.innerText && userDataArr[i].password == password.value) {
-                        userName = userDataArr[i].fname;
+                for (let i = 0; i < usersCredentialsArr.length; i++) {
+                    if (usersCredentialsArr[i].email == setEmail.innerText && usersCredentialsArr[i].password == password.value) {
+                        userName = usersCredentialsArr[i].fname;
                         isValidCredentials = true;
                         break;
                     }
                 }
 
                 if(isValidCredentials) {
-                    localStorage.setItem("signupUserName", userName)
+                    localStorage.setItem("userLoggedIn", true);
+                    localStorage.setItem("loggedInUserName", userName)
                     location.href = "./index.html";
                 }
                 else {
@@ -215,6 +216,7 @@
 
             });
         </script>
+        <script src="./index.js"></script>
     </div>
 </body>
 </html>

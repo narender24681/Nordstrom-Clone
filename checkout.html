@@ -50,18 +50,23 @@
             margin-top: 40px;
             margin-bottom: 10px;
         }
-        #checkout-container-right > #product {
+        .product {
             display: flex;
             justify-content: space-between;
-            margin: 20px 0px;
-            line-height: 1.4;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            line-height: 0.4;
         }
-        #checkout-container-right > #product > img {
+        .product > img {
             width: 30%;
             object-fit: contain;
         }
-        #checkout-container-right > #product > div {
+        .product > div {
             width: 60%;
+        }
+        .product-name {
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
         .blue {
             color: dodgerblue;
@@ -95,6 +100,7 @@
             background-color: black;
             padding: 14px 0px;
             width: 300px;
+            cursor: pointer;
         }
         .p-center {
             text-align: center;
@@ -153,7 +159,7 @@
                 <div id="totalPrice">
                     <div>
                         <p>Items</p>
-                        <p>₹6,250</p>
+                        <p id="totalPrice-price">₹6,250</p>
                     </div>
                     <div>
                         <p>Shipping</p>
@@ -165,7 +171,7 @@
                     </div>
                     <div>
                         <h3>TOTAL</h3>
-                        <h3>(INR) ₹13,285</h3>
+                        <h3 id="totalPrice-total">(INR) ₹13,285</h3>
                     </div>
                 </div>
 
@@ -173,21 +179,71 @@
                 <p id="promoCode">Promo Code</p>
                 <hr>
 
-                <div id="product">
-                    <img src="https://n.nordstrommedia.com/id/sr3/e3de6e99-07a2-4739-9e0f-adf90a22c11e.jpeg?crop=pad&pad_color=FFF&format=jpeg" alt="">
-                    <div>
-                        <p><b>Air Force 1 '07 Sneaker</b></p>
-                        <p>Color: White</p>
-                        <p>Size: 7</p>
-                        <p>Qty: 1</p>
-                        <p><b>₹9,898</b></p>
-                    </div>
-                </div>
+                <div id="product-container"></div>
             </div>
         </div>
 
         <script>
+            var productContainer = document.getElementById("product-container");
+            var placeOrder = document.getElementById("place-order");
+
+            var totalPricePrice = document.getElementById("totalPrice-price");
+            var totalPriceTotal = document.getElementById("totalPrice-total");
+
             
+            placeOrder.addEventListener("click", () => {
+                location.href = "./order-placed.html"
+            });
+            
+            var checkOutProductsArr = JSON.parse(localStorage.getItem("checkOutProductsArr"));
+            if (checkOutProductsArr == null) {
+                checkOutProductsArr = [];
+            }
+
+            var price1 = 0;
+
+            checkOutProductsArr.forEach((element, index) => {
+                var card = document.createElement("div");
+                card.setAttribute("class", "product");
+
+                var img = document.createElement("img");
+                img.setAttribute("src", element.image);
+
+                var name = document.createElement("p");
+                name.setAttribute("class", "product-name");
+                var nameBold = document.createElement("b");
+                nameBold.innerText = element.name;
+                name.append(nameBold);
+                
+                var color = document.createElement("p");
+                color.innerText = "Color: " + element.color;
+
+                var size = document.createElement("p");
+                size.innerText = "Size: " + element.size;
+
+                var quantity = document.createElement("p");
+                quantity.innerText = "Qty: " + element.quantity;
+
+                var price = document.createElement("p");
+                var priceBold = document.createElement("b");
+                priceBold.innerText = element.price.replace("INR ", "₹");
+                price.append(priceBold);
+                price1 += Number(element.price.replace("INR ", "").replace("INR: ", "").replace(",", "")) * element.quantity;
+
+                var div1 = document.createElement("div");
+                div1.append(name, color, size, quantity, price);
+
+                card.append(img, div1);
+                productContainer.append(card);
+                console.log(card);
+            });
+
+
+            if (checkOutProductsArr != null) {
+                totalPricePrice.innerText = "₹" + price1.toLocaleString();
+                var total = price1 + 3100 + 6250;
+                totalPriceTotal.innerText = "(INR) ₹" + total.toLocaleString();
+            }
         </script>
     </div>
 </body>

@@ -28,4 +28,29 @@ search.addEventListener("keypress", (event) => {
     }
 });
 
+
+
+
+var showUserName = document.getElementById("showUserName");
+var signOut = document.getElementById("signOut");
+var getUserName = localStorage.getItem("loggedInUserName");
+
+if (getUserName != null && showUserName != null) {
+    console.log(getUserName == "")
+    if (getUserName != null) {
+        if(getUserName != "") {
+            showUserName.innerText = "Hi, " + getUserName;
+            signOut.innerText = "Sign Out";
+        }
+    }
+}
+
+
+if (signOut != null) {
+    signOut.addEventListener("click", () => {
+        localStorage.setItem("userLoggedIn", false);
+        localStorage.setItem("loggedInUserName", "");
+        location.href = "./index.html";
+    });
+}
         

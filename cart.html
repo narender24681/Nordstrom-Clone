@@ -93,41 +93,45 @@
             padding: 14px 0px;
             background-color: black;
         }
-        #shopping-products {
+        .shopping-products {
             display: flex;
             justify-content: space-between;
         }
-        #shopping-products-left {
+        .shopping-products-left {
             width: 30%;
         }
-        #shopping-products-middle {
+        .shopping-products-middle {
             width: 30%;
             line-height: 1.5;
         }
-        #shopping-products-right {
+        .shopping-products-right {
             width: 10%;
         }
-        #shopping-products-left {
+        .shopping-products-left {
             display: flex;
         }
-        #shopping-products-left > #product-image > img {
+        .shopping-products-left > .product-image > img {
             width: 100px;
             height: 150px;
             object-fit: contain;
         }
-        #shopping-products-left > #product-text {
+        .shopping-products-left > .product-text {
             margin-left: 30px;
             line-height: 1.5;
         }
-        #product-text-bottom > div {
+        .product-image > div {
             display: flex;
             justify-content: space-between;
         }
-        #product-text-bottom > #productQuantity {
+        .product-text-bottom > .productQuantity {
             margin-top: 40px;
             margin-bottom: 20px;
         }
-        #productQuantity {
+        .product-text-bottom > div {
+            display: flex;
+            justify-content: space-between;
+        }
+        .productQuantity {
             border: none;
         }
     </style>
@@ -163,7 +167,7 @@
         
         <div id="cart-container">
             <div id="buttons">
-                <button id="shoppingBagBtn">Shopping Bag(1)</button>
+                <button id="shoppingBagBtn">Shopping Bag(0)</button>
                 <button id="saveForLaterBtn">Saved for Later(0)</button>
             </div>
 
@@ -178,46 +182,8 @@
                 
                 <h3>Shipping (1 item) to <span class="blue">India</span></h3>
                 <p>International shipping</p>
-                <hr class="hr-top">
-
-                <div id="shopping-products">
-                    <div id="shopping-products-left">
-                        <div id="product-image">
-                            <img src="https://n.nordstrommedia.com/id/sr3/e3de6e99-07a2-4739-9e0f-adf90a22c11e.jpeg?crop=pad&pad_color=FFF&format=jpeg" alt="">
-                        </div>
-                        <div id="product-text">
-                            <div id="product-text-top">
-                                <p>NIKE</p>
-                                <p>Air Force 1 '07 Sneaker</p>
-
-                                <p>Size: 7</p>
-                                <p>Color: White</p>
-                                <p>Item: 6983763</p>
-                            </div>
-                            <div id="product-text-bottom">
-                                <select id="productQuantity">
-                                    <option value="1">Qty 1</option>
-                                    <option value="2">Qty 2</option>
-                                    <option value="3">Qty 3</option>
-                                    <option value="4">Qty 4</option>
-                                    <option value="5">Qty 5</option>
-                                </select>
-
-                                <div>
-                                    <p class="blue">Remove</p>
-                                    <p class="blue">Save for later</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="shopping-products-middle">
-                        <h3>Shipping</h3>
-                        <p>International orders usually arrive within 5–13 business days. We'll give you shipping dates in checkout.</p>
-                    </div>
-                    <div id="shopping-products-right">
-                        <p><b>INR 9,898</b></p>
-                    </div>
-                </div>
+                
+                <div id="shopping-products-container"></div>
                 
                 <hr class="hr-bottom">
 
@@ -236,19 +202,7 @@
                         <button id="checkoutBtn">Check Out</button>
                     </div>
                 </div>
-
-
             </div>
-
-
-
-            <!-- <div id="emptyCart">
-                <h2>Your bag is empty</h2>
-                <button id="continueShoppingBtn">Continue Shopping</button>
-                <p>Accepted Payment Methods</p>
-                <p>Need help? Call 1.888.282.6060 or <span class="blue">chat with us</span></p>
-                <p class="blue">Shipping internationally?</p>
-            </div> -->
         </div>
 
         <div id="footer">
@@ -314,19 +268,175 @@
             </div>
         </div>
 
+        <script src="./index.js"></script>
         <script>
-            var cartContainer = document.getElementById("cart-container");
-            var continueShoppingBtn = document.getElementById("continueShoppingBtn");
-            var checkoutBtn = document.getElementById("checkoutBtn");
+            var shoppingBag = document.getElementById("shoppingBag");
+            var shoppingBagBtn = document.getElementById("shoppingBagBtn");
+            var shoppingProductsContainer = document.getElementById("shopping-products-container");
 
-            // continueShoppingBtn.addEventListener("click", () => {
-            //     location.href = "./index.html";
-            // });
+            var cartContainer = document.getElementById("cart-container");
+            var checkoutBtn = document.getElementById("checkoutBtn");
+            var productBrand = document.getElementById("product-brand");
+            var productName = document.getElementById("product-name");
+            var productSize = document.getElementById("product-size");
+            var productColor = document.getElementById("product-color");
+            var productsPrice = document.getElementById("products-price");
+            var totalPrice = document.getElementById("totalPrice");
+            var productImg = document.getElementById("product-img");
+            var productQuantity = document.getElementById("productQuantity");
             
-            checkoutBtn.addEventListener("click", () => {
-                location.href = "./checkout.html";
-            });
+            
+            var cartProductsArr = JSON.parse(localStorage.getItem("cartProductsArr"));
+            if (cartProductsArr == null) {
+                cartProductsArr = [];
+            }
+
+            shoppingBagBtn.innerText = `Shopping Bag(${cartProductsArr.length})`;
+            
+            if (cartProductsArr == null || cartProductsArr.length == 0) {
+                console.log(cartProductsArr.length);
+                shoppingBag.innerHTML = null;
+                
+                shoppingBag.innerHTML = 
+                `<div id="emptyCart">
+                    <h2>Your bag is empty</h2>
+                    <button id="continueShoppingBtn">Continue Shopping</button>
+                    <p>Accepted Payment Methods</p>
+                    <p>Need help? Call 1.888.282.6060 or <span class="blue">chat with us</span></p>
+                    <p class="blue">Shipping internationally?</p>
+                    </div>`;
+                    
+                var continueShoppingBtn = document.getElementById("continueShoppingBtn");
+                continueShoppingBtn.addEventListener("click", () => {
+                location.href = "./index.html";
+                });
+            }
+            else {
+                var checkOutProductsArr = JSON.parse(localStorage.getItem("checkOutProductsArr"));
+                if (checkOutProductsArr == null) {
+                    checkOutProductsArr = [];
+                }
+                // localStorage.setItem("checkOutProductsArr", JSON.stringify(cartProductsArr));
+
+
+               
+                cartProductsArr.forEach((element, index) => {
+                    console.log(element);
+                    var hr1 = document.createElement("hr");
+                    hr1.setAttribute("class", "hr-bottom");
+
+                    var divMain = document.createElement("div");
+                    divMain.setAttribute("class", "shopping-products");
+                    
+                    var divLeft = document.createElement("div");
+                    divLeft.setAttribute("class", "shopping-products-left");
+                    var divImage = document.createElement("div");
+                    divImage.setAttribute("class", "product-image");
+                    var img3 = document.createElement("img");
+                    img3.setAttribute("src", element.image);
+                    var divText = document.createElement("div");
+                    divText.setAttribute("class", "product-text");
+                    var divTextTop = document.createElement("div");
+                    divTextTop.setAttribute("class", "product-text-top");
+                    var brandT1 = document.createElement("p");
+                    brandT1.innerText = element.brand;
+                    var nameT1 = document.createElement("p");
+                    nameT1.innerText = element.name;
+                    var sizeT1 = document.createElement("p");
+                    sizeT1.innerText = "Size: " + element.size;
+                    var colorT1 = document.createElement("p");
+                    colorT1.innerText = "Color: " + element.color;
+                    var itemT1 = document.createElement("p");
+                    itemT1.innerText = "Item: " + "9626953";
+                    divTextTop.append(brandT1, nameT1, sizeT1, colorT1, itemT1);
+                    var divTextBottom = document.createElement("div");
+                    divTextBottom.setAttribute("class", "product-text-bottom");
+                    var selectB1 = document.createElement("select");
+                    selectB1.setAttribute("class", "productQuantity");
+
+                    checkOutProductsArr.push({...element, totalPrice: element.price, quantity: 1});
+                    console.log(checkOutProductsArr);
+                    
+                    selectB1.addEventListener("change", () => {
+                        checkOutProductsArr[index].quantity = selectB1.value;
+                        console.log(checkOutProductsArr);
+
+                        setSubTotal();
+                    }); 
+
+                    var selectB1Value1 = document.createElement("option");
+                    selectB1Value1.setAttribute("value", 1);
+                    selectB1Value1.innerText = "Qty: 1";
+                    var selectB1Value2 = document.createElement("option");
+                    selectB1Value2.setAttribute("value", 2);
+                    selectB1Value2.innerText = "Qty: 2";
+                    var selectB1Value3 = document.createElement("option");
+                    selectB1Value3.setAttribute("value", 3);
+                    selectB1Value3.innerText = "Qty: 3";
+                    var selectB1Value4 = document.createElement("option");
+                    selectB1Value4.setAttribute("value", 4);
+                    selectB1Value4.innerText = "Qty: 4";
+                    var selectB1Value5 = document.createElement("option");
+                    selectB1Value5.setAttribute("value", 5);
+                    selectB1Value5.innerText = "Qty: 5";
+                    selectB1.append(selectB1Value1, selectB1Value2, selectB1Value3, selectB1Value4, selectB1Value5);
+                    var divB2 = document.createElement("div");
+                    var pB21 = document.createElement("p");
+                    pB21.setAttribute("class", "blue");
+                    pB21.innerText = "Remove";
+                    var pB22 = document.createElement("p");
+                    pB22.setAttribute("class", "blue");
+                    pB22.innerText = "Save for later"; 
+                    divImage.append(img3);
+                    divB2.append(pB21, pB22)
+                    divTextBottom.append(selectB1, divB2);
+                    divText.append(divTextTop, divTextBottom);
+                    divLeft.append(divImage, divText);
+
+                    var divMiddle = document.createElement("div");
+                    divMiddle.setAttribute("class", "shopping-products-middle");
+                    var head3 = document.createElement("h3");
+                    head3.innerText = "Shipping";
+                    var p3 = document.createElement("p");
+                    p3.innerText = "International orders usually arrive within 5–13 business days. We'll give you shipping dates in checkout.";
+                    divMiddle.append(head3, p3);
+
+                    var divRight = document.createElement("div");
+                    divRight.setAttribute("class", "shopping-products-right");
+                    var price1 = document.createElement("p");
+                    var price1Bold = document.createElement("b");
+                    price1Bold.innerText = element.price;
+                    price1.append(price1Bold);
+                    divRight.append(price1);
+
+                    divMain.append(divLeft, divMiddle, divRight);
+                    shoppingProductsContainer.append(hr1, divMain);
+                });
+
+
+
+                checkoutBtn.addEventListener("click", () => {
+                    localStorage.setItem("checkOutProductsArr", JSON.stringify(checkOutProductsArr));
+        
+                    location.href = "./checkout.html";
+                });
+
+
+
+                setSubTotal();
+
+                function setSubTotal() {
+                    var subTotalPrice = 0;
+                    checkOutProductsArr.forEach((element1, index1) => {
+                        subTotalPrice += Number(element1.price.replace("INR ", "").replace(",", "")) * Number(element1.quantity);
+                    });
+                    console.log(subTotalPrice)
+                    totalPrice.innerText = "INR: " + subTotalPrice.toLocaleString();
+                }
+                
+            }
         </script>
+
     </div>
 </body>
 </html>

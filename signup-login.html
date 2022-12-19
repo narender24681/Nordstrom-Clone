@@ -142,19 +142,19 @@
                 
                 localStorage.setItem("signupEmail", email.value)
                 
-                var userDataArr = JSON.parse(localStorage.getItem("userData"));
-                if (userDataArr == null) {
-                    userDataArr = [];
+                var usersCredentialsArr = JSON.parse(localStorage.getItem("usersCredentials"));
+                if (usersCredentialsArr == null) {
+                    usersCredentialsArr = [];
                 }
                 
-                if (userDataArr.length == 0) {
+                if (usersCredentialsArr.length == 0) {
                     location.href = "./signup.html";
                 }
                 else {
                     var isUserPresent = false;
 
-                    for (let i = 0; i < userDataArr.length; i++) {
-                        if (userDataArr[i].email == email.value) {
+                    for (let i = 0; i < usersCredentialsArr.length; i++) {
+                        if (usersCredentialsArr[i].email == email.value) {
                             isUserPresent = true;
                             break;
                         }
@@ -169,6 +169,7 @@
                 }
             });
         </script>
+        <script src="./index.js"></script>
     </div>
 </body>
 </html>

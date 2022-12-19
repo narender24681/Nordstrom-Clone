@@ -184,8 +184,17 @@
                         var a = document.createElement("a");
                         a.setAttribute("href", "./product.html");
                         var img = document.createElement("img");
-                        img.setAttribute("src", element.image);
+                        if (element.images != undefined) {
+                            img.setAttribute("src", element.images[0]);
+                        }
+                        else {
+                            img.setAttribute("src", element.image);
+                        }
                         a.append(img);
+                        
+                        img.addEventListener("click", () => {
+                            localStorage.setItem("productData", JSON.stringify(element));
+                        });
         
                         var brand = document.createElement("h3");
                         brand.innerText = element.brand;

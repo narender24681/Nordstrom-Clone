@@ -36,6 +36,7 @@
             display: block;
             margin: auto;
             background-color: white;
+            cursor: pointer;
         }
         #product > #product-info {
             width: 40%;
@@ -205,20 +206,20 @@
         <div id="product-container">
             <div id="product">
                 <div id="product-images">
-                    <img src="https://n.nordstrommedia.com/id/sr3/e1f5bfee-ee4f-439a-a7ff-5270d7825de0.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
-                    <img src="https://n.nordstrommedia.com/id/sr3/a3c1c949-1e6c-4b3c-966d-5ddced45ce24.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
-                    <img class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/e3de6e99-07a2-4739-9e0f-adf90a22c11e.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
-                    <img class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/43669822-a634-4414-8be3-b9dd2441cafa.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
-                    <img class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/2a0aeafe-77e2-4af4-9482-61d651ea069a.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
-                    <img class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/982d6496-6961-4453-8b91-81b3ebd347fc.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img id="product-image1" src="https://n.nordstrommedia.com/id/sr3/e1f5bfee-ee4f-439a-a7ff-5270d7825de0.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img id="product-image2" src="https://n.nordstrommedia.com/id/sr3/a3c1c949-1e6c-4b3c-966d-5ddced45ce24.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img id="product-image3" class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/e3de6e99-07a2-4739-9e0f-adf90a22c11e.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img id="product-image4" class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/43669822-a634-4414-8be3-b9dd2441cafa.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img id="product-image5" class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/2a0aeafe-77e2-4af4-9482-61d651ea069a.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
+                    <img id="product-image6" class="imgDisplay" src="https://n.nordstrommedia.com/id/sr3/982d6496-6961-4453-8b91-81b3ebd347fc.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" alt="">
                     <button id="showMoreLess">Show More</button>
                 </div>
 
 
                 <div id="product-info">
-                    <h2>Air Force 1 '07 Sneaker</h2>
-                    <p>NIKE</p>
-                    <p><b>INR 8,787.79 – INR 9,666.57</b></p>
+                    <h2 id="product-info-name">Air Force 1 '07 Sneaker</h2>
+                    <p id="product-info-brand">NIKE</p>
+                    <p><b id="product-info-price">INR 8,787.79</b></p>
                     <p>Back-to-basics detailing keeps the look timeless on an '80s-throwback sneaker reissued with OG colors and a cool low-cut profile.</p>
                     <p id="fit"><b>Fit:</b> True to size.</p>
 
@@ -304,12 +305,12 @@
                 
                 <h2>Customer photos</h2>
                 <div id="product-customer-images">
-                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/a5cde7b4-4196-5e7d-9b7d-b62b342d59bf" alt="">
-                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/1a5073fd-2d0c-5e13-b05c-5364e817240a" alt="">
-                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/e16ab3ef-4f20-509e-8bfe-6df23d09737c" alt="">
-                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/b0dec3b3-66d1-58d8-9a3c-59b84a864000" alt="">
-                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/78156d1c-dd91-542b-a277-4fb9bc31a9f7" alt="">
-                    <img src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/d92aafb1-199e-5f15-b09c-81507e3a3e7b" alt="">
+                    <img id="product-customer-image1" src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/a5cde7b4-4196-5e7d-9b7d-b62b342d59bf" alt="">
+                    <img id="product-customer-image2" src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/1a5073fd-2d0c-5e13-b05c-5364e817240a" alt="">
+                    <img id="product-customer-image3" src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/e16ab3ef-4f20-509e-8bfe-6df23d09737c" alt="">
+                    <img id="product-customer-image4" src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/b0dec3b3-66d1-58d8-9a3c-59b84a864000" alt="">
+                    <img id="product-customer-image5" src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/78156d1c-dd91-542b-a277-4fb9bc31a9f7" alt="">
+                    <img id="product-customer-image6" src="https://photos-us.bazaarvoice.com/photo/2/cGhvdG86bmlrZS10dXJudG8/d92aafb1-199e-5f15-b09c-81507e3a3e7b" alt="">
                 </div>
                 
                 <hr class="hr-top">
@@ -470,6 +471,62 @@
             var addToCartBtn = document.getElementById("addToCartBtn");
             var selectSize = document.getElementById("selectSize");
             var selectColor = document.getElementById("selectColor");
+            
+
+            var productInfoName = document.getElementById("product-info-name");
+            var productInfoBrand = document.getElementById("product-info-brand");
+            var productInfoprice = document.getElementById("product-info-price");
+            var productImage1 = document.getElementById("product-image1");
+            var productImage2 = document.getElementById("product-image2");
+            var productImage3 = document.getElementById("product-image3");
+            var productImage4 = document.getElementById("product-image4");
+            var productImage5 = document.getElementById("product-image5");
+            var productImage6 = document.getElementById("product-image6");
+            var productCustomerImage1 = document.getElementById("product-customer-image1");
+            var productCustomerImage2 = document.getElementById("product-customer-image2");
+            var productCustomerImage3 = document.getElementById("product-customer-image3");
+            var productCustomerImage4 = document.getElementById("product-customer-image4");
+            var productCustomerImage5 = document.getElementById("product-customer-image5");
+            var productCustomerImage6 = document.getElementById("product-customer-image6");
+            
+            var productData = JSON.parse(localStorage.getItem("productData"));
+            if (productData != null) {
+                if (productData.brand != "NIKE") {
+                    productInfoName.innerText = productData.name;
+                    productInfoBrand.innerText = productData.brand;
+                    productInfoprice.innerText = productData.price;
+
+                    if (productData.images != undefined) {
+                        productImage1.setAttribute("src", productData.images[0]);
+                        productImage2.setAttribute("src", productData.images[1]);
+                        productImage3.setAttribute("src", productData.images[2]);
+                        productImage4.setAttribute("src", productData.images[3]);
+                        productImage5.setAttribute("src", productData.images[4]);
+                        productImage6.setAttribute("src", productData.images[5]);
+                        productCustomerImage1.setAttribute("src", productData.images[0]);
+                        productCustomerImage2.setAttribute("src", productData.images[1]);
+                        productCustomerImage3.setAttribute("src", productData.images[2]);
+                        productCustomerImage4.setAttribute("src", productData.images[3]);
+                        productCustomerImage5.setAttribute("src", productData.images[4]);
+                        productCustomerImage6.setAttribute("src", productData.images[5]);
+                    }
+                    else {
+                        productImage1.setAttribute("src", productData.image);
+                        productImage2.setAttribute("src", productData.image);
+                        productImage3.setAttribute("src", productData.image);
+                        productImage4.setAttribute("src", productData.image);
+                        productImage5.setAttribute("src", productData.image);
+                        productImage6.setAttribute("src", productData.image);
+                        productCustomerImage1.setAttribute("src", productData.image);
+                        productCustomerImage2.setAttribute("src", productData.image);
+                        productCustomerImage3.setAttribute("src", productData.image);
+                        productCustomerImage4.setAttribute("src", productData.image);
+                        productCustomerImage5.setAttribute("src", productData.image);
+                        productCustomerImage6.setAttribute("src", productData.image);
+                    }
+                }
+            }
+
 
             console.log(product);
 
@@ -492,9 +549,17 @@
             });
 
 
+            var cartProductsArr = JSON.parse(localStorage.getItem("cartProductsArr"));
+            if (cartProductsArr == null) {
+                cartProductsArr = [];
+            }
+
             addToCartBtn.addEventListener("click", () => {
-                console.log(selectSize.value);
-                console.log(selectColor.value);
+                var productData = JSON.parse(localStorage.getItem("productData"));
+                if (productData != null) {
+                    cartProductsArr.push({...productData, size: selectSize.value, color: selectColor.value})
+                    localStorage.setItem("cartProductsArr", JSON.stringify(cartProductsArr));
+                }
 
                 location.href = "./cart.html";
             });

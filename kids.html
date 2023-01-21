@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stromify Online & In Store: Shoes, Jewelry, Clothing, Makeup, Dresses</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        #products {
+            width: 95%;
+            margin: auto;
+            margin-bottom: 100px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+        #products > .card > a > img {
+            width: 100%;
+        }
+        #filter {
+            display: block;
+            margin: 40px auto;
+            padding: 7px 14px;
+            font-size: 18px;
+        }
+        @media screen and (min-width: 721px) and (max-width: 1080px) {
+            #products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media screen and (max-width: 720px) {
+            #products {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="nav">
+            <div id="nav-top">
+                <h1><a href="index.html">STROMIFY</a></h1>
+                <div>
+                    <input id="search" type="text" placeholder="Search for products or brands">
+                </div>
+                <p id="showUserName"><a href="signup-login.html">Sign In</a></p>
+                <p id="signOut">Stores</p>
+                <p>Purchases</p>
+                <p>Cart</p>
+            </div>
+            <hr id="nav-hr">
+            <div id="nav-bottom">
+                <p>Holiday Gifts</p>
+                <p>Holiday Deals</p>
+                <p><a href="womens.html">Women</a></p>
+                <p><a href="mens.html">Men</a></p>
+                <p><a href="kids.html">Kids</a></p>
+                <p>Young Adult</p>
+                <p>Activewear</p>
+                <p>Home</p>
+                <p>Beauty</p>
+                <p>Designer</p>
+                <p>The Thread</p>
+            </div>
+        </div>
+
+
+        <div class="products-main">
+            <select id="filter">
+                <option value="">Filter By Featured</option>
+                <option value="Shirts">Shirts</option>
+                <option value="Pants">Pants</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Sweaters">Sweaters</option>
+            </select>
+
+            <div id="products"></div>
+        </div>
+
+
+        <div id="footer">
+            <div id="footer-top">
+                <div>
+                   <h3>Customer Service</h3>
+                    <p>Contact Us</p>
+                    <p>Order Status</p>
+                    <p>Shipping</p>
+                    <p>Return Policy & Exchanges</p>
+                    <p>Price Adjustments</p>
+                    <p>Gift Cards</p>
+                    <p>FAQ</p>
+                    <p>Product Recalls</p>
+                    <div id="india">
+                        <img src="https://n.nordstrommedia.com/alias/IN.gif" alt="">
+                        <p>India</p>
+                    </div>
+                </div>
+                <div>
+                   <h3>About Us</h3>
+                    <p>All Brands</p>
+                    <p>Careers</p>
+                    <p>Corporate Social Responsibility</p>
+                    <p>Diversity, Inclusion & Belonging</p>
+                    <p>Get Email Updates</p>
+                    <p>Nordstorm Blog</p>
+                    <p>The Thread</p>
+                    <p>Nordy Podcast</p>
+                </div>
+                <div>
+                   <h3>Stores & Services</h3>
+                    <p>Find a Store</p>
+                    <p>Free Style Help</p>
+                    <p>Alterations & Tailoring</p>
+                    <p>Pop-In Shop</p>
+                    <p>Virtual Events</p>
+                    <p>Spa Nordstrom</p>
+                    <p>Nordstrom Restaurants</p>
+                    <p>Nordstrom Local</p>
+                </div>
+                <div>
+                   <h3>Nordstrom Card & Rewards</h3>
+                    <p>The Nordy Club Rewards</p>
+                    <p>Pay My Bill</p>
+                    <p>Manage My Nordstrom Card</p>
+                </div>
+                <div>
+                   <h3>Nordstrom, Inc.</h3>
+                    <p>Nordstrom Rack</p>
+                    <p>Nordstrom Canada</p>
+                    <p>Investor Relations</p>
+                    <p>Press Releases</p>
+                    <p>Nordstrom Media Network</p>
+                </div>
+            </div>
+            <div id="footer-bottom">
+                <p>Privacy</p>
+                <p>Do Not Sell My Personal information</p>
+                <p>Terms & Condition</p>
+                <p>Interest-Based Ads</p>
+                <p>@2022 Strimify, Inc.</p>
+            </div>
+        </div>
+
+        <script>
+            var products = document.getElementById("products");
+            var filter = document.getElementById("filter");
+
+            var productsArr = JSON.parse(localStorage.getItem("productsArr"));
+            if (productsArr == null) {
+                productsArr = [];
+            }
+
+            displayProducts(productsArr);
+
+            filter.addEventListener("change", () => {
+                console.log(filter.value);
+                var filteredProductsArr = productsArr.filter((element, index) => {
+                    if (filter.value == element.type) {
+                        return true;
+                    }
+                    else if (filter.value == "") {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                });
+
+                displayProducts(filteredProductsArr);
+            });
+
+            function displayProducts(productsArr) {
+                products.innerHTML = null;
+
+                productsArr.forEach((element, index) => {
+                    if (element.gender == "Kids") {
+                        var card = document.createElement("div");
+                        card.setAttribute("class", "card");
+        
+                        var a = document.createElement("a");
+                        a.setAttribute("href", "./product.html");
+                        var img = document.createElement("img");
+                        if (element.images != undefined) {
+                            img.setAttribute("src", element.images[0]);
+                        }
+                        else {
+                            img.setAttribute("src", element.image);
+                        }
+                        a.append(img);
+                        
+                        img.addEventListener("click", () => {
+                            localStorage.setItem("productData", JSON.stringify(element));
+                        });
+        
+                        var brand = document.createElement("h3");
+                        brand.innerText = element.brand;
+        
+                        var name = document.createElement("p");
+                        name.innerText = element.name;
+        
+                        var price = document.createElement("p")
+                        var priceBold = document.createElement("b")
+                        priceBold.innerText = element.price;
+                        price.append(priceBold);
+        
+                        var ratingDiv = document.createElement("div")
+                        var totalRating = document.createElement("p")
+                        totalRating.innerText = "(" + element.totalRating + ")";
+                        ratingDiv.append(totalRating)
+        
+                        card.append(a, brand, name, price, ratingDiv);
+                        products.append(card);
+                    }
+                });
+            }
+        </script>
+        <script src="./index.js"></script>
+    </div>
+</body>
+</html>

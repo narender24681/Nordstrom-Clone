@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Products</title>
+    <style>
+        form {
+            width: 250px;
+            margin: auto;
+        }
+        form > select, form > input[type="submit"] {
+            width: 100%;
+        }
+        form > input {
+            width: 236px;
+        }
+        form > select, form > input {
+            padding: 10px 0px 10px 10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <select id="gender">
+            <option value="">Select Gender</option>
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="Kids">Kids</option>
+        </select>
+
+        <select id="type">
+            <option value="">Select Type</option>
+            <option value="Shirts">Shirts</option>
+            <option value="Pants">Pants</option>
+            <option value="Tops">Tops</option>
+            <option value="Dresses">Dresses</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Jackets">Jackets</option>
+            <option value="Sweaters">Sweaters</option>
+            <option value="Handbags">Handbags</option>
+            <option value="Jewelry">Jewelry</option>
+        </select>
+
+        <input id="image" type="text" placeholder="Enter image url">
+        <input id="brand" type="text" placeholder="Enter brand name">
+        <input id="name" type="text" placeholder="Enter product name">
+        <input id="price" type="text" placeholder="Enter product price">
+        <input id="rating" type="number" placeholder="Enter product rating">
+        <input id="totalRating" type="number" placeholder="Enter product total rating">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        var form = document.querySelector("form");
+
+        var productsArr = JSON.parse(localStorage.getItem("productsArr"));
+        if (productsArr == null) {
+            productsArr = [];
+        }
+        
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            var product = {
+                gender: form.gender.value,
+                type: form.type.value,
+                image: form.image.value,
+                brand: form.brand.value,
+                name: form.name.value,
+                price: form.price.value,
+                rating: form.rating.value,
+                totalRating: form.totalRating.value,
+            } 
+
+            productsArr.push(product);
+            localStorage.setItem("productsArr", JSON.stringify(productsArr));
+            console.log(productsArr);
+        });
+    </script>
+</body>
+</html>
